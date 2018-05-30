@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'MessagesController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('messages', 'MessagesController');
