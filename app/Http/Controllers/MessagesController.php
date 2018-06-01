@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests;
+
 use App\Message;
 
 class MessagesController extends Controller
@@ -43,7 +45,16 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+        
+        
+        $task = new Message;
+        $task -> content = $request -> content;
+        $task -> save();
+        
+        return redirect('/');
     }
 
     /**
@@ -80,6 +91,10 @@ class MessagesController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+        
         $message = Message::find($id);
         $message->content = $request->content;
         $message->save();
