@@ -46,13 +46,15 @@ class MessagesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'title' => 'reequired|max:191',
             'content' => 'required|max:191',
         ]);
         
         
-        $task = new Message;
-        $task -> content = $request -> content;
-        $task -> save();
+        $message = new Message;
+        $message->title =$request->title;
+        $message -> content = $request -> content;
+        $message -> save();
         
         return redirect('/');
     }
@@ -92,10 +94,12 @@ class MessagesController extends Controller
     public function update(Request $request, $id)
     {
          $this->validate($request, [
+             'title' => 'required|max:191',
             'content' => 'required|max:191',
         ]);
         
         $message = Message::find($id);
+        $message->title = $request->title;
         $message->content = $request->content;
         $message->save();
 

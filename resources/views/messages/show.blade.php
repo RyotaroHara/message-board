@@ -4,6 +4,8 @@
 
     <h1>id = {{ $message->id }} のメッセージ詳細ページ</h1>
 
+    <p>タイトル: {{ $message->title }}</p>
+
     <p>{{ $message->content }}</p>
 <!-- Write content for each page here -->
 
