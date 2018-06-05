@@ -46,7 +46,7 @@ class MessagesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'reequired|max:191',
+            'title' => 'required|max:191',
             'content' => 'required|max:191',
         ]);
         

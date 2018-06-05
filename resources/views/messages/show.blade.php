@@ -6,7 +6,7 @@
 
     <p>タイトル: {{ $message->title }}</p>
 
-    <p>{{ $message->content }}</p>
+    <p>メッセージ: {{ $message->content }}</p>
 <!-- Write content for each page here -->
 
     {!! link_to_route('messages.edit', 'このメッセージを編集', ['id' => $message->id]) !!}
